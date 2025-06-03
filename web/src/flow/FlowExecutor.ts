@@ -12,6 +12,7 @@ import { themeImage } from "#elements/utils/images";
 import "#flow/components/ak-brand-footer";
 import "#flow/sources/apple/AppleLoginInit";
 import "#flow/sources/plex/PlexLoginInit";
+import "#flow/sources/wecom/WeComLoginInit";
 import "#flow/stages/FlowErrorStage";
 import "#flow/stages/FlowFrameStage";
 import "#flow/stages/RedirectStage";
@@ -420,6 +421,11 @@ export class FlowExecutor
                     .host=${this as StageHost}
                     .challenge=${this.challenge}
                 ></ak-flow-source-plex>`;
+            case "ak-source-wecom":
+                return html`<ak-flow-source-wecom
+                    .host=${this as StageHost}
+                    .challenge=${this.challenge}
+                ></ak-flow-source-wecom>`;
             case "ak-source-oauth-apple":
                 return html`<ak-flow-source-oauth-apple
                     .host=${this as StageHost}

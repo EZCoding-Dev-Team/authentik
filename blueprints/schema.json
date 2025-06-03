@@ -1889,6 +1889,126 @@
                         ],
                         "properties": {
                             "model": {
+                                "const": "authentik_sources_wecom.wecomsource"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string",
+                                "enum": [
+                                    "absent",
+                                    "present",
+                                    "created",
+                                    "must_created"
+                                ],
+                                "default": "present"
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "permissions": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsource_permissions"
+                            },
+                            "attrs": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsource"
+                            },
+                            "identifiers": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsource"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "model",
+                            "identifiers"
+                        ],
+                        "properties": {
+                            "model": {
+                                "const": "authentik_sources_wecom.wecomsourcepropertymapping"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string",
+                                "enum": [
+                                    "absent",
+                                    "present",
+                                    "created",
+                                    "must_created"
+                                ],
+                                "default": "present"
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "permissions": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsourcepropertymapping_permissions"
+                            },
+                            "attrs": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsourcepropertymapping"
+                            },
+                            "identifiers": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.wecomsourcepropertymapping"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "model",
+                            "identifiers"
+                        ],
+                        "properties": {
+                            "model": {
+                                "const": "authentik_sources_wecom.userwecomsourceconnection"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string",
+                                "enum": [
+                                    "absent",
+                                    "present",
+                                    "created",
+                                    "must_created"
+                                ],
+                                "default": "present"
+                            },
+                            "conditions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "permissions": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.userwecomsourceconnection_permissions"
+                            },
+                            "attrs": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.userwecomsourceconnection"
+                            },
+                            "identifiers": {
+                                "$ref": "#/$defs/model_authentik_sources_wecom.userwecomsourceconnection"
+                            }
+                        }
+                    },
+                    {
+                        "type": "object",
+                        "required": [
+                            "model",
+                            "identifiers"
+                        ],
+                        "properties": {
+                            "model": {
                                 "const": "authentik_sources_saml.samlsource"
                             },
                             "id": {
@@ -4873,6 +4993,7 @@
                         "authentik.sources.ldap",
                         "authentik.sources.oauth",
                         "authentik.sources.plex",
+                        "authentik.sources.wecom",
                         "authentik.sources.saml",
                         "authentik.sources.scim",
                         "authentik.stages.authenticator",
@@ -4967,6 +5088,9 @@
                         "authentik_sources_plex.plexsourcepropertymapping",
                         "authentik_sources_plex.userplexsourceconnection",
                         "authentik_sources_plex.groupplexsourceconnection",
+                        "authentik_sources_wecom.wecomsource",
+                        "authentik_sources_wecom.wecomsourcepropertymapping",
+                        "authentik_sources_wecom.userwecomsourceconnection",
                         "authentik_sources_saml.samlsource",
                         "authentik_sources_saml.samlsourcepropertymapping",
                         "authentik_sources_saml.usersamlsourceconnection",
@@ -7411,6 +7535,18 @@
                             "authentik_sources_scim.view_scimsourcegroup",
                             "authentik_sources_scim.view_scimsourcepropertymapping",
                             "authentik_sources_scim.view_scimsourceuser",
+                            "authentik_sources_wecom.add_userwecomsourceconnection",
+                            "authentik_sources_wecom.add_wecomsource",
+                            "authentik_sources_wecom.add_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.change_userwecomsourceconnection",
+                            "authentik_sources_wecom.change_wecomsource",
+                            "authentik_sources_wecom.change_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.delete_userwecomsourceconnection",
+                            "authentik_sources_wecom.delete_wecomsource",
+                            "authentik_sources_wecom.delete_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.view_userwecomsourceconnection",
+                            "authentik_sources_wecom.view_wecomsource",
+                            "authentik_sources_wecom.view_wecomsourcepropertymapping",
                             "authentik_stages_authenticator_duo.add_authenticatorduostage",
                             "authentik_stages_authenticator_duo.add_duodevice",
                             "authentik_stages_authenticator_duo.change_authenticatorduostage",
@@ -9033,6 +9169,233 @@
                             "change_groupplexsourceconnection",
                             "delete_groupplexsourceconnection",
                             "view_groupplexsourceconnection"
+                        ]
+                    },
+                    "user": {
+                        "type": "integer"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model_authentik_sources_wecom.wecomsource": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Name",
+                    "description": "Source's display Name."
+                },
+                "slug": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1,
+                    "pattern": "^[-a-zA-Z0-9_]+$",
+                    "title": "Slug",
+                    "description": "Internal source name, used in URLs."
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled"
+                },
+                "authentication_flow": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Authentication flow",
+                    "description": "Flow to use when authenticating existing users."
+                },
+                "enrollment_flow": {
+                    "type": "string",
+                    "format": "uuid",
+                    "title": "Enrollment flow",
+                    "description": "Flow to use when enrolling new users."
+                },
+                "user_property_mappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "title": "User property mappings"
+                },
+                "group_property_mappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "title": "Group property mappings"
+                },
+                "policy_engine_mode": {
+                    "type": "string",
+                    "enum": [
+                        "all",
+                        "any"
+                    ],
+                    "title": "Policy engine mode"
+                },
+                "user_matching_mode": {
+                    "type": "string",
+                    "enum": [
+                        "identifier",
+                        "email_link",
+                        "email_deny",
+                        "username_link",
+                        "username_deny"
+                    ],
+                    "title": "User matching mode",
+                    "description": "How the source determines if an existing user should be authenticated or a new user enrolled."
+                },
+                "user_path_template": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "User path template"
+                },
+                "icon": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Icon"
+                },
+                "corp_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Corp id",
+                    "description": "Corp identifier used to talk to WeCom."
+                },
+                "agent_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Agent id",
+                    "description": "Agent identifier used to talk to WeCom."
+                },
+                "secret": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Secret",
+                    "description": "Secret used to talk to WeCom."
+                }
+            },
+            "required": []
+        },
+        "model_authentik_sources_wecom.wecomsource_permissions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "permission"
+                ],
+                "properties": {
+                    "permission": {
+                        "type": "string",
+                        "enum": [
+                            "add_wecomsource",
+                            "change_wecomsource",
+                            "delete_wecomsource",
+                            "view_wecomsource"
+                        ]
+                    },
+                    "user": {
+                        "type": "integer"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model_authentik_sources_wecom.wecomsourcepropertymapping": {
+            "type": "object",
+            "properties": {
+                "managed": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "minLength": 1,
+                    "title": "Managed by authentik",
+                    "description": "Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update."
+                },
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Name"
+                },
+                "expression": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Expression"
+                }
+            },
+            "required": []
+        },
+        "model_authentik_sources_wecom.wecomsourcepropertymapping_permissions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "permission"
+                ],
+                "properties": {
+                    "permission": {
+                        "type": "string",
+                        "enum": [
+                            "add_wecomsourcepropertymapping",
+                            "change_wecomsourcepropertymapping",
+                            "delete_wecomsourcepropertymapping",
+                            "view_wecomsourcepropertymapping"
+                        ]
+                    },
+                    "user": {
+                        "type": "integer"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model_authentik_sources_wecom.userwecomsourceconnection": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "integer",
+                    "title": "User"
+                },
+                "source": {
+                    "type": "integer",
+                    "title": "Source"
+                },
+                "identifier": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Identifier"
+                },
+                "icon": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Icon"
+                }
+            },
+            "required": []
+        },
+        "model_authentik_sources_wecom.userwecomsourceconnection_permissions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "permission"
+                ],
+                "properties": {
+                    "permission": {
+                        "type": "string",
+                        "enum": [
+                            "add_userwecomsourceconnection",
+                            "change_userwecomsourceconnection",
+                            "delete_userwecomsourceconnection",
+                            "view_userwecomsourceconnection"
                         ]
                     },
                     "user": {
@@ -14145,6 +14508,18 @@
                             "authentik_sources_scim.view_scimsourcegroup",
                             "authentik_sources_scim.view_scimsourcepropertymapping",
                             "authentik_sources_scim.view_scimsourceuser",
+                            "authentik_sources_wecom.add_userwecomsourceconnection",
+                            "authentik_sources_wecom.add_wecomsource",
+                            "authentik_sources_wecom.add_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.change_userwecomsourceconnection",
+                            "authentik_sources_wecom.change_wecomsource",
+                            "authentik_sources_wecom.change_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.delete_userwecomsourceconnection",
+                            "authentik_sources_wecom.delete_wecomsource",
+                            "authentik_sources_wecom.delete_wecomsourcepropertymapping",
+                            "authentik_sources_wecom.view_userwecomsourceconnection",
+                            "authentik_sources_wecom.view_wecomsource",
+                            "authentik_sources_wecom.view_wecomsourcepropertymapping",
                             "authentik_stages_authenticator_duo.add_authenticatorduostage",
                             "authentik_stages_authenticator_duo.add_duodevice",
                             "authentik_stages_authenticator_duo.change_authenticatorduostage",

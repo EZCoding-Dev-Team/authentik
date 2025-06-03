@@ -6,37 +6,9 @@
         <source>English</source>
         <target>English</target>
       </trans-unit>
-      <trans-unit id="s75a27f43413e02c5">
-        <source>French</source>
-        <target>French</target>
-      </trans-unit>
-      <trans-unit id="s9d2d00982edafabb">
-        <source>Turkish</source>
-        <target>Turkish</target>
-      </trans-unit>
-      <trans-unit id="sf1868dc19e3917bb">
-        <source>Spanish</source>
-        <target>Spanish</target>
-      </trans-unit>
-      <trans-unit id="s03f49e598ffb11cc">
-        <source>Polish</source>
-        <target>Polish</target>
-      </trans-unit>
-      <trans-unit id="s4660da32fb311ac0">
-        <source>Taiwanese Mandarin</source>
-        <target>Taiwanese Mandarin</target>
-      </trans-unit>
       <trans-unit id="s354e0a9f146d2869">
         <source>Chinese (simplified)</source>
         <target>Chinese (simplified)</target>
-      </trans-unit>
-      <trans-unit id="se3e6af2ce24d80e8">
-        <source>Chinese (traditional)</source>
-        <target>Chinese (traditional)</target>
-      </trans-unit>
-      <trans-unit id="s63e71d20d1eaca93">
-        <source>German</source>
-        <target>German</target>
       </trans-unit>
       <trans-unit id="s49730f3d5751a433">
         <source>Loading...</source>
@@ -6130,12 +6102,6 @@ Bindings to groups/users are checked against the user of the event.</source>
 <trans-unit id="s62418cbcd2a25498">
   <source>Maximum concurrent allowed connections to this endpoint. Can be set to -1 to disable the limit.</source>
 </trans-unit>
-<trans-unit id="s94d61907ee22a8c1">
-  <source>Korean</source>
-</trans-unit>
-<trans-unit id="s95d56e58f816d211">
-  <source>Dutch</source>
-</trans-unit>
 <trans-unit id="s744401846fea6e76">
   <source>Brand</source>
 </trans-unit>
@@ -6834,9 +6800,6 @@ Bindings to groups/users are checked against the user of the event.</source>
 <trans-unit id="s08272eeeddfd244e">
   <source>An outpost is on an incorrect version!</source>
 </trans-unit>
-<trans-unit id="sa30c12014e955946">
-  <source>Russian</source>
-</trans-unit>
 <trans-unit id="s354405ae02cb262d">
   <source>Last seen: <x id="0" equiv-text="${formatElapsedTime(lastSeen)}"/> (<x id="1" equiv-text="${lastSeen.toLocaleTimeString()}"/>)</source>
 </trans-unit>
@@ -7085,9 +7048,6 @@ Bindings to groups/users are checked against the user of the event.</source>
 </trans-unit>
 <trans-unit id="sc24af6de78468cfa">
   <source>Require administrators to provide a reason for impersonating a user.</source>
-</trans-unit>
-<trans-unit id="sd48cc52117f4d68b">
-  <source>Italian</source>
 </trans-unit>
 <trans-unit id="s6cee92a3b310e650">
   <source>Add entry</source>
@@ -7757,6 +7717,21 @@ Bindings to groups/users are checked against the user of the event.</source>
 </trans-unit>
 <trans-unit id="s344be99cf5d36407">
   <source>Attribute which matches the value of Group membership field.</source>
+</trans-unit>
+<trans-unit id="s65464ecd2c396106">
+  <source>Corporation id</source>
+</trans-unit>
+<trans-unit id="sb5d655981f2a3274">
+  <source>AgentId id</source>
+</trans-unit>
+<trans-unit id="s0e2e4c2247feb7e1">
+  <source>Also known as App ID.</source>
+</trans-unit>
+<trans-unit id="s9025c40297775331">
+  <source>Secret</source>
+</trans-unit>
+<trans-unit id="s61f50f34aacf415e">
+  <source>Authenticating with WeCom...</source>
 </trans-unit>
     </body>
   </file>

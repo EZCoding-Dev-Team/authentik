@@ -95,6 +95,14 @@ export class UserSourceSettingsPage extends AKElement {
                     .configureUrl=${this.canConnect ? source.configureUrl : undefined}
                 >
                 </ak-user-settings-source-plex>`;
+            case "ak-user-settings-source-wecom":
+                return html`<ak-user-settings-source-wecom
+                    objectId=${source.objectUid}
+                    title=${source.title}
+                    connectionPk=${connectionPk}
+                    .configureUrl=${this.canConnect ? source.configureUrl : undefined}
+                >
+                </ak-user-settings-source-wecom>`;
             case "ak-user-settings-source-saml":
                 return html`<ak-user-settings-source-saml
                     objectId=${source.objectUid}

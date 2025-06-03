@@ -4,6 +4,7 @@ import "@goauthentik/admin/sources/ldap/LDAPSourceForm";
 import "@goauthentik/admin/sources/oauth/OAuthSourceForm";
 import "@goauthentik/admin/sources/plex/PlexSourceForm";
 import "@goauthentik/admin/sources/saml/SAMLSourceForm";
+import "@goauthentik/admin/sources/wecom/WeComSourceForm";
 import { DEFAULT_CONFIG } from "@goauthentik/common/api/config";
 import { PFColor } from "@goauthentik/elements/Label";
 import "@goauthentik/elements/forms/DeleteBulkForm";

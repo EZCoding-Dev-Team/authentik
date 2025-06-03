@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-02 00:12+0000\n"
+"POT-Creation-Date: 2025-06-04 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1521,8 +1521,8 @@ msgstr ""
 
 #: authentik/providers/oauth2/models.py
 msgid ""
-"Tokens not valid on or after current time + this value (Format: hours=1;"
-"minutes=2;seconds=3)."
+"Tokens not valid on or after current time + this value (Format: "
+"hours=1;minutes=2;seconds=3)."
 msgstr ""
 
 #: authentik/providers/oauth2/models.py
@@ -1849,20 +1849,20 @@ msgstr ""
 
 #: authentik/providers/saml/models.py
 msgid ""
-"Assertion valid not before current time + this value (Format: hours=-1;"
-"minutes=-2;seconds=-3)."
+"Assertion valid not before current time + this value (Format: "
+"hours=-1;minutes=-2;seconds=-3)."
 msgstr ""
 
 #: authentik/providers/saml/models.py
 msgid ""
-"Assertion not valid on or after current time + this value (Format: hours=1;"
-"minutes=2;seconds=3)."
+"Assertion not valid on or after current time + this value (Format: "
+"hours=1;minutes=2;seconds=3)."
 msgstr ""
 
 #: authentik/providers/saml/models.py
 msgid ""
-"Session not valid on or after current time + this value (Format: hours=1;"
-"minutes=2;seconds=3)."
+"Session not valid on or after current time + this value (Format: "
+"hours=1;minutes=2;seconds=3)."
 msgstr ""
 
 #: authentik/providers/saml/models.py authentik/sources/saml/models.py
@@ -2676,6 +2676,62 @@ msgstr ""
 
 #: authentik/sources/scim/models.py
 msgid "SCIM Source Property Mappings"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "Corp identifier used to talk to WeCom."
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "Agent identifier used to talk to WeCom."
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "Secret used to talk to WeCom."
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Sources"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source Property Mapping"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source Property Mappings"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "User WeCom Source Connection"
+msgstr ""
+
+#: authentik/sources/wecom/models.py
+msgid "User WeCom Source Connections"
+msgstr ""
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Authentication Successful"
+msgstr ""
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Authentication Failed"
+msgstr ""
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "You have successfully authenticated. You may close this page."
+msgstr ""
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "There was a problem during authentication. Please try again."
+msgstr ""
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Close"
 msgstr ""
 
 #: authentik/stages/authenticator_duo/models.py
@@ -3557,8 +3613,8 @@ msgstr ""
 
 #: authentik/tenants/models.py
 msgid ""
-"Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,"
-"seconds=2)."
+"Events will be deleted after this duration.(Format: "
+"weeks=3;days=2;hours=3,seconds=2)."
 msgstr ""
 
 #: authentik/tenants/models.py

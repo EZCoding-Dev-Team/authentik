@@ -96,6 +96,7 @@ TENANT_APPS = [
     "authentik.sources.ldap",
     "authentik.sources.oauth",
     "authentik.sources.plex",
+    "authentik.sources.wecom",
     "authentik.sources.saml",
     "authentik.sources.scim",
     "authentik.stages.authenticator",

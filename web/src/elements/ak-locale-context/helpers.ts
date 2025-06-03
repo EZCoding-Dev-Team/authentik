@@ -1,9 +1,9 @@
 import { globalAK } from "@goauthentik/common/global";
 
-import { LOCALES as RAW_LOCALES, enLocale } from "./definitions";
+import { LOCALES as RAW_LOCALES, zhLocale } from "./definitions";
 import { AkLocale } from "./types";
 
-export const DEFAULT_LOCALE = "en";
+export const DEFAULT_LOCALE = "zh";
 
 export const EVENT_REQUEST_LOCALE = "ak-request-locale";
 
@@ -14,7 +14,7 @@ const TOMBSTONE = "⛼⛼tombstone⛼⛼";
 // application is first instantiated.
 
 export const LOCALES = RAW_LOCALES.map((locale) =>
-    locale.code === "en" ? { ...locale, locale: async () => enLocale } : locale,
+    locale.code === "zh" ? { ...locale, locale: async () => zhLocale } : locale,
 );
 
 export function getBestMatchLocale(locale: string): AkLocale | undefined {

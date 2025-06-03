@@ -1,15 +1,15 @@
-import * as _enLocale from "@goauthentik/locales/en";
+import * as _zhLocale from "@goauthentik/locales/zh";
 
 import type { LocaleModule } from "@lit/localize";
 import { msg } from "@lit/localize";
 
 import { AkLocale, LocaleRow } from "./types";
 
-export const DEFAULT_FALLBACK = "en";
+export const DEFAULT_FALLBACK = "zh";
 
-const enLocale: LocaleModule = _enLocale;
+const zhLocale: LocaleModule = _zhLocale;
 
-export { enLocale };
+export { zhLocale };
 
 // NOTE: This table cannot be made any shorter, despite all the repetition of syntax. Bundlers look
 // for the `await import` string as a *string target* for doing alias substitution, so putting
@@ -37,24 +37,13 @@ export { enLocale };
 
 // prettier-ignore
 const debug: LocaleRow = [
-    "pseudo-LOCALE",  /^pseudo/i,  () => msg("Pseudolocale (for testing)"),  async () => await import("@goauthentik/locales/pseudo-LOCALE"),
+    "pseudo-LOCALE", /^pseudo/i, () => msg("Pseudolocale (for testing)"), async () => await import("@goauthentik/locales/pseudo-LOCALE"),
 ];
 
 // prettier-ignore
 const LOCALE_TABLE: LocaleRow[] = [
-    ["de",      /^de([_-]|$)/i,      () => msg("German"),                async () => await import("@goauthentik/locales/de")],
     ["en",      /^en([_-]|$)/i,      () => msg("English"),               async () => await import("@goauthentik/locales/en")],
-    ["es",      /^es([_-]|$)/i,      () => msg("Spanish"),               async () => await import("@goauthentik/locales/es")],
-    ["fr",      /^fr([_-]|$)/i,      () => msg("French"),                async () => await import("@goauthentik/locales/fr")],
-    ["it",      /^it([_-]|$)/i,      () => msg("Italian"),               async () => await import("@goauthentik/locales/it")],
-    ["ko",      /^ko([_-]|$)/i,      () => msg("Korean"),                async () => await import("@goauthentik/locales/ko")],
-    ["nl",      /^nl([_-]|$)/i,      () => msg("Dutch"),                 async () => await import("@goauthentik/locales/nl")],
-    ["pl",      /^pl([_-]|$)/i,      () => msg("Polish"),                async () => await import("@goauthentik/locales/pl")],
-    ["ru",      /^ru([_-]|$)/i,      () => msg("Russian"),               async () => await import("@goauthentik/locales/ru")],
-    ["tr",      /^tr([_-]|$)/i,      () => msg("Turkish"),               async () => await import("@goauthentik/locales/tr")],
-    ["zh_TW",   /^zh[_-]TW$/i,       () => msg("Taiwanese Mandarin"),    async () => await import("@goauthentik/locales/zh_TW")],
-    ["zh-Hans", /^zh(\b|_)/i,        () => msg("Chinese (simplified)"),  async () => await import("@goauthentik/locales/zh-Hans")],
-    ["zh-Hant", /^zh[_-](HK|Hant)/i, () => msg("Chinese (traditional)"), async () => await import("@goauthentik/locales/zh-Hant")],
+    ["zh",      /^zh([_-]|$)/i,      () => msg("Chinese (simplified)"),  async () => await import("@goauthentik/locales/zh")],
     debug
 ];
 

@@ -33,8 +33,6 @@ import {
 
 export function ProviderToLabel(provider?: ProviderTypeEnum): string {
     switch (provider) {
-        case undefined:
-            return "";
         case ProviderTypeEnum.Apple:
             return "Apple";
         case ProviderTypeEnum.Azuread:
@@ -66,6 +64,7 @@ export function ProviderToLabel(provider?: ProviderTypeEnum): string {
         case ProviderTypeEnum.UnknownDefaultOpenApi:
             return msg("Unknown provider type");
     }
+    return "";
 }
 
 @customElement("ak-source-oauth-view")

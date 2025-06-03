@@ -1,0 +1,72 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% if success %}{% trans "Authentication Successful" %}{% else %}{% trans "Authentication Failed" %}{% endif %}</title>
+    <style>
+        body {
+            background: #f5f6fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans', Arial, sans-serif;
+        }
+        .icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            margin-top: 10vh;
+        }
+        .success {
+            color: #52c41a;
+        }
+        .fail {
+            color: #ff4d4f;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .desc {
+            color: #888;
+            font-size: 18px;
+            margin-bottom: 40px;
+            padding: 0 24px;
+        }
+        .close-btn {
+            background: #1890ff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 0;
+            width: 80vw;
+            max-width: 320px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 8vh;
+        }
+        .close-btn:active {
+            background: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+    {% load i18n %}
+    {% if success %}
+        <div class="icon success">✔️</div>
+        <div class="title">{% trans "Authentication Successful" %}</div>
+        <div class="desc">{% trans "You have successfully authenticated. You may close this page." %}</div>
+    {% else %}
+        <div class="icon fail">❌</div>
+        <div class="title">{% trans "Authentication Failed" %}</div>
+        <div class="desc">{% trans "There was a problem during authentication. Please try again." %}</div>
+    {% endif %}
+    <button class="close-btn" onclick="window.close()">{% trans "Close" %}</button>
+</body>
+</html>

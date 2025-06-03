@@ -19205,6 +19205,287 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
+  /propertymappings/source/wecom/:
+    get:
+      operationId: propertymappings_source_wecom_list
+      description: WeComSourcePropertyMapping Viewset
+      parameters:
+      - in: query
+        name: managed
+        schema:
+          type: array
+          items:
+            type: string
+        explode: true
+        style: form
+      - in: query
+        name: managed__isnull
+        schema:
+          type: boolean
+      - in: query
+        name: name
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWeComSourcePropertyMappingList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    post:
+      operationId: propertymappings_source_wecom_create
+      description: WeComSourcePropertyMapping Viewset
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeComSourcePropertyMappingRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /propertymappings/source/wecom/{pm_uuid}/:
+    get:
+      operationId: propertymappings_source_wecom_retrieve
+      description: WeComSourcePropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this WeCom Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: propertymappings_source_wecom_update
+      description: WeComSourcePropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this WeCom Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeComSourcePropertyMappingRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: propertymappings_source_wecom_partial_update
+      description: WeComSourcePropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this WeCom Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWeComSourcePropertyMappingRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSourcePropertyMapping'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: propertymappings_source_wecom_destroy
+      description: WeComSourcePropertyMapping Viewset
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this WeCom Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /propertymappings/source/wecom/{pm_uuid}/used_by/:
+    get:
+      operationId: propertymappings_source_wecom_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: pm_uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this WeCom Source Property Mapping.
+        required: true
+      tags:
+      - propertymappings
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
   /providers/all/:
     get:
       operationId: providers_all_list
@@ -24964,6 +25245,9 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_wecom.userwecomsourceconnection
+          - authentik_sources_wecom.wecomsource
+          - authentik_sources_wecom.wecomsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_email.authenticatoremailstage
@@ -25213,6 +25497,9 @@ paths:
           - authentik_sources_saml.usersamlsourceconnection
           - authentik_sources_scim.scimsource
           - authentik_sources_scim.scimsourcepropertymapping
+          - authentik_sources_wecom.userwecomsourceconnection
+          - authentik_sources_wecom.wecomsource
+          - authentik_sources_wecom.wecomsourcepropertymapping
           - authentik_stages_authenticator_duo.authenticatorduostage
           - authentik_stages_authenticator_duo.duodevice
           - authentik_stages_authenticator_email.authenticatoremailstage
@@ -32492,6 +32779,620 @@ paths:
               schema:
                 $ref: '#/components/schemas/GenericError'
           description: ''
+  /sources/user_connections/wecom/:
+    get:
+      operationId: sources_user_connections_wecom_list
+      description: User-source connection Viewset
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: source__slug
+        schema:
+          type: string
+      - in: query
+        name: user
+        schema:
+          type: integer
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUserWeComSourceConnectionList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    post:
+      operationId: sources_user_connections_wecom_create
+      description: User-source connection Viewset
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserWeComSourceConnectionRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWeComSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/user_connections/wecom/{id}/:
+    get:
+      operationId: sources_user_connections_wecom_retrieve
+      description: User-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User WeCom Source Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWeComSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: sources_user_connections_wecom_update
+      description: User-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User WeCom Source Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserWeComSourceConnectionRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWeComSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: sources_user_connections_wecom_partial_update
+      description: User-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User WeCom Source Connection.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserWeComSourceConnectionRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWeComSourceConnection'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: sources_user_connections_wecom_destroy
+      description: User-source connection Viewset
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User WeCom Source Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/user_connections/wecom/{id}/used_by/:
+    get:
+      operationId: sources_user_connections_wecom_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this User WeCom Source Connection.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/wecom/:
+    get:
+      operationId: sources_wecom_list
+      description: WeCom source Viewset
+      parameters:
+      - in: query
+        name: agent_id
+        schema:
+          type: string
+      - in: query
+        name: authentication_flow
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: corp_id
+        schema:
+          type: string
+      - in: query
+        name: enabled
+        schema:
+          type: boolean
+      - in: query
+        name: enrollment_flow
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: name
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: pbm_uuid
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: policy_engine_mode
+        schema:
+          type: string
+          enum:
+          - all
+          - any
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: slug
+        schema:
+          type: string
+      - in: query
+        name: user_matching_mode
+        schema:
+          type: string
+          enum:
+          - email_deny
+          - email_link
+          - identifier
+          - username_deny
+          - username_link
+        description: |+
+          How the source determines if an existing user should be authenticated or a new user enrolled.
+
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWeComSourceList'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    post:
+      operationId: sources_wecom_create
+      description: WeCom source Viewset
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeComSourceRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/wecom/{slug}/:
+    get:
+      operationId: sources_wecom_retrieve
+      description: WeCom source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    put:
+      operationId: sources_wecom_update
+      description: WeCom source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeComSourceRequest'
+        required: true
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    patch:
+      operationId: sources_wecom_partial_update
+      description: WeCom source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWeComSourceRequest'
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeComSource'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+    delete:
+      operationId: sources_wecom_destroy
+      description: WeCom source Viewset
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '204':
+          description: No response body
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/wecom/{slug}/used_by/:
+    get:
+      operationId: sources_wecom_used_by_list
+      description: Get a list of all objects that use this object
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          description: Internal source name, used in URLs.
+        required: true
+      tags:
+      - sources
+      security:
+      - authentik: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsedBy'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: ''
+  /sources/wecom/validate_code/:
+    post:
+      operationId: sources_wecom_validate_code_create
+      description: WeCom source Viewset
+      parameters:
+      - in: query
+        name: slug
+        schema:
+          type: string
+      tags:
+      - sources
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WeComCodeValidationRequest'
+        required: true
+      security:
+      - authentik: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectChallenge'
+          description: ''
+        '400':
+          description: No code found
+        '403':
+          description: Access denied
   /ssf/streams/:
     get:
       operationId: ssf_streams_list
@@ -41236,6 +42137,7 @@ components:
       - authentik.sources.ldap
       - authentik.sources.oauth
       - authentik.sources.plex
+      - authentik.sources.wecom
       - authentik.sources.saml
       - authentik.sources.scim
       - authentik.stages.authenticator
@@ -43330,6 +44232,7 @@ components:
       - $ref: '#/components/schemas/SessionEndChallenge'
       - $ref: '#/components/schemas/ShellChallenge'
       - $ref: '#/components/schemas/UserLoginChallenge'
+      - $ref: '#/components/schemas/WeComLoginChallenge'
       discriminator:
         propertyName: component
         mapping:
@@ -43359,6 +44262,7 @@ components:
           ak-stage-session-end: '#/components/schemas/SessionEndChallenge'
           xak-flow-shell: '#/components/schemas/ShellChallenge'
           ak-stage-user-login: '#/components/schemas/UserLoginChallenge'
+          ak-source-wecom: '#/components/schemas/WeComLoginChallenge'
     ClientTypeEnum:
       enum:
       - confidential
@@ -45326,6 +46230,7 @@ components:
       - $ref: '#/components/schemas/PromptChallengeResponseRequest'
       - $ref: '#/components/schemas/RedirectChallengeResponseRequest'
       - $ref: '#/components/schemas/UserLoginChallengeResponseRequest'
+      - $ref: '#/components/schemas/WeComChallengeResponseRequest'
       discriminator:
         propertyName: component
         mapping:
@@ -45351,6 +46256,7 @@ components:
           ak-stage-prompt: '#/components/schemas/PromptChallengeResponseRequest'
           xak-flow-redirect: '#/components/schemas/RedirectChallengeResponseRequest'
           ak-stage-user-login: '#/components/schemas/UserLoginChallengeResponseRequest'
+          ak-source-wecom: '#/components/schemas/WeComChallengeResponseRequest'
     FlowDesignationEnum:
       enum:
       - authentication
@@ -48291,12 +49197,14 @@ components:
       - $ref: '#/components/schemas/RedirectChallenge'
       - $ref: '#/components/schemas/AppleLoginChallenge'
       - $ref: '#/components/schemas/PlexAuthenticationChallenge'
+      - $ref: '#/components/schemas/WeComLoginChallenge'
       discriminator:
         propertyName: component
         mapping:
           xak-flow-redirect: '#/components/schemas/RedirectChallenge'
           ak-source-oauth-apple: '#/components/schemas/AppleLoginChallenge'
           ak-source-plex: '#/components/schemas/PlexAuthenticationChallenge'
+          ak-source-wecom: '#/components/schemas/WeComLoginChallenge'
     LoginMetrics:
       type: object
       description: Login Metrics per 1h
@@ -48675,6 +49583,9 @@ components:
       - authentik_sources_plex.plexsourcepropertymapping
       - authentik_sources_plex.userplexsourceconnection
       - authentik_sources_plex.groupplexsourceconnection
+      - authentik_sources_wecom.wecomsource
+      - authentik_sources_wecom.wecomsourcepropertymapping
+      - authentik_sources_wecom.userwecomsourceconnection
       - authentik_sources_saml.samlsource
       - authentik_sources_saml.samlsourcepropertymapping
       - authentik_sources_saml.usersamlsourceconnection
@@ -51533,6 +52444,18 @@ components:
       required:
       - pagination
       - results
+    PaginatedUserWeComSourceConnectionList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserWeComSourceConnection'
+      required:
+      - pagination
+      - results
     PaginatedUserWriteStageList:
       type: object
       properties:
@@ -51542,6 +52465,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserWriteStage'
+      required:
+      - pagination
+      - results
+    PaginatedWeComSourceList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeComSource'
+      required:
+      - pagination
+      - results
+    PaginatedWeComSourcePropertyMappingList:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeComSourcePropertyMapping'
       required:
       - pagination
       - results
@@ -55232,6 +56179,18 @@ components:
         identifier:
           type: string
           minLength: 1
+    PatchedUserWeComSourceConnectionRequest:
+      type: object
+      description: User source connection
+      properties:
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
     PatchedUserWriteStageRequest:
       type: object
       description: UserWriteStage Serializer
@@ -55257,6 +56216,83 @@ components:
           $ref: '#/components/schemas/UserTypeEnum'
         user_path_template:
           type: string
+    PatchedWeComSourcePropertyMappingRequest:
+      type: object
+      description: WeComSourcePropertyMapping Serializer
+      properties:
+        managed:
+          type: string
+          nullable: true
+          minLength: 1
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+          minLength: 1
+        expression:
+          type: string
+          minLength: 1
+    PatchedWeComSourceRequest:
+      type: object
+      description: WeCom Source Serializer
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Source's display Name.
+        slug:
+          type: string
+          minLength: 1
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          type: string
+          minLength: 1
+        corp_id:
+          type: string
+          minLength: 1
+          description: Corp identifier used to talk to WeCom.
+        agent_id:
+          type: string
+          minLength: 1
+          description: Agent identifier used to talk to WeCom.
+        secret:
+          type: string
+          minLength: 1
+          description: Secret used to talk to WeCom.
     PatchedWebAuthnDeviceRequest:
       type: object
       description: Serializer for WebAuthn authenticator devices
@@ -61199,6 +62235,57 @@ components:
       - preferred
       - discouraged
       type: string
+    UserWeComSourceConnection:
+      type: object
+      description: User source connection
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        source_obj:
+          allOf:
+          - $ref: '#/components/schemas/Source'
+          readOnly: true
+        identifier:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        last_updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - identifier
+      - last_updated
+      - pk
+      - source
+      - source_obj
+      - user
+    UserWeComSourceConnectionRequest:
+      type: object
+      description: User source connection
+      properties:
+        user:
+          type: integer
+        source:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+          minLength: 1
+      required:
+      - identifier
+      - source
+      - user
     UserWriteStage:
       type: object
       description: UserWriteStage Serializer
@@ -61343,6 +62430,283 @@ components:
       - id
       - timestamp
       - version
+    WeComChallengeResponseRequest:
+      type: object
+      description: Pseudo class for WeCom response
+      properties:
+        component:
+          type: string
+          minLength: 1
+          default: ak-source-wecom
+    WeComCodeValidationRequest:
+      type: object
+      description: Serializer to validate a WeCom code
+      properties:
+        state:
+          type: string
+          minLength: 1
+      required:
+      - state
+    WeComLoginChallenge:
+      type: object
+      description: Challenge for WeCom shown to the user in identification stage
+      properties:
+        flow_info:
+          $ref: '#/components/schemas/ContextualFlowInfo'
+        component:
+          type: string
+          default: ak-source-wecom
+        response_errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorDetail'
+        corp_id:
+          type: string
+        agent_id:
+          type: string
+        slug:
+          type: string
+        state:
+          type: string
+        callback_uri:
+          type: string
+      required:
+      - agent_id
+      - callback_uri
+      - corp_id
+      - slug
+      - state
+    WeComSource:
+      type: object
+      description: WeCom Source Serializer
+      properties:
+        pk:
+          type: string
+          format: uuid
+          readOnly: true
+          title: Pbm uuid
+        name:
+          type: string
+          description: Source's display Name.
+        slug:
+          type: string
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        component:
+          type: string
+          description: Get object component so that we know how to edit the object
+          readOnly: true
+        verbose_name:
+          type: string
+          description: Return object's verbose_name
+          readOnly: true
+        verbose_name_plural:
+          type: string
+          description: Return object's plural verbose_name
+          readOnly: true
+        meta_model_name:
+          type: string
+          description: Return internal model name
+          readOnly: true
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        managed:
+          type: string
+          nullable: true
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+          readOnly: true
+        user_path_template:
+          type: string
+        icon:
+          type: string
+          readOnly: true
+        corp_id:
+          type: string
+          description: Corp identifier used to talk to WeCom.
+        agent_id:
+          type: string
+          description: Agent identifier used to talk to WeCom.
+        secret:
+          type: string
+          description: Secret used to talk to WeCom.
+      required:
+      - agent_id
+      - component
+      - corp_id
+      - icon
+      - managed
+      - meta_model_name
+      - name
+      - pk
+      - secret
+      - slug
+      - verbose_name
+      - verbose_name_plural
+    WeComSourcePropertyMapping:
+      type: object
+      description: WeComSourcePropertyMapping Serializer
+      properties:
+        pk:
+          type: string
+          format: uuid
+          readOnly: true
+          title: Pm uuid
+        managed:
+          type: string
+          nullable: true
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+        expression:
+          type: string
+        component:
+          type: string
+          description: Get object's component so that we know how to edit the object
+          readOnly: true
+        verbose_name:
+          type: string
+          description: Return object's verbose_name
+          readOnly: true
+        verbose_name_plural:
+          type: string
+          description: Return object's plural verbose_name
+          readOnly: true
+        meta_model_name:
+          type: string
+          description: Return internal model name
+          readOnly: true
+      required:
+      - component
+      - expression
+      - meta_model_name
+      - name
+      - pk
+      - verbose_name
+      - verbose_name_plural
+    WeComSourcePropertyMappingRequest:
+      type: object
+      description: WeComSourcePropertyMapping Serializer
+      properties:
+        managed:
+          type: string
+          nullable: true
+          minLength: 1
+          title: Managed by authentik
+          description: Objects that are managed by authentik. These objects are created
+            and updated automatically. This flag only indicates that an object can
+            be overwritten by migrations. You can still modify the objects via the
+            API, but expect changes to be overwritten in a later update.
+        name:
+          type: string
+          minLength: 1
+        expression:
+          type: string
+          minLength: 1
+      required:
+      - expression
+      - name
+    WeComSourceRequest:
+      type: object
+      description: WeCom Source Serializer
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Source's display Name.
+        slug:
+          type: string
+          minLength: 1
+          description: Internal source name, used in URLs.
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        enabled:
+          type: boolean
+        authentication_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when authenticating existing users.
+        enrollment_flow:
+          type: string
+          format: uuid
+          nullable: true
+          description: Flow to use when enrolling new users.
+        user_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        group_property_mappings:
+          type: array
+          items:
+            type: string
+            format: uuid
+        policy_engine_mode:
+          $ref: '#/components/schemas/PolicyEngineMode'
+        user_matching_mode:
+          allOf:
+          - $ref: '#/components/schemas/UserMatchingModeEnum'
+          description: How the source determines if an existing user should be authenticated
+            or a new user enrolled.
+        user_path_template:
+          type: string
+          minLength: 1
+        corp_id:
+          type: string
+          minLength: 1
+          description: Corp identifier used to talk to WeCom.
+        agent_id:
+          type: string
+          minLength: 1
+          description: Agent identifier used to talk to WeCom.
+        secret:
+          type: string
+          minLength: 1
+          description: Secret used to talk to WeCom.
+      required:
+      - agent_id
+      - corp_id
+      - name
+      - secret
+      - slug
     WebAuthnDevice:
       type: object
       description: Serializer for WebAuthn authenticator devices
