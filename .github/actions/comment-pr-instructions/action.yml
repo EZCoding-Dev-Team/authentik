@@ -32,7 +32,7 @@ runs:
             ```shell
             AUTHENTIK_IMAGE=ghcr.io/goauthentik/dev-server
             AUTHENTIK_TAG=${{ inputs.tag }}
-            AUTHENTIK_OUTPOSTS__CONTAINER_IMAGE_BASE=ghcr.io/goauthentik/dev-%(type)s:gh-%(build_hash)s
+            AUTHENTIK_OUTPOSTS__CONTAINER_IMAGE_BASE=ghcr.io/EZCoding-Dev-Team/authentik/dev-%(type)s:gh-%(build_hash)s
             ```
 
             Afterwards, run the upgrade commands from the latest release notes.
@@ -45,10 +45,10 @@ runs:
             ```yaml
             authentik:
                 outposts:
-                    container_image_base: ghcr.io/goauthentik/dev-%(type)s:gh-%(build_hash)s
+                    container_image_base: ghcr.io/EZCoding-Dev-Team/authentik/dev-%(type)s:gh-%(build_hash)s
             global:
                 image:
-                    repository: ghcr.io/goauthentik/dev-server
+                    repository: ghcr.io/EZCoding-Dev-Team/authentik/dev-server
                     tag: ${{ inputs.tag }}
             ```
 

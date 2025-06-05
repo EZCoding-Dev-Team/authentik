@@ -26,7 +26,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         with:
-          image-name: ghcr.io/goauthentik/server
+          image-name: ghcr.io/EZCoding-Dev-Team/authentik/server
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
