@@ -251,7 +251,7 @@ jobs:
     uses: ./.github/workflows/_reusable-docker-build.yaml
     secrets: inherit
     with:
-      image_name: ghcr.io/EZCoding-Dev-Team/authentik/dev-server
+      image_name: ghcr.io/ezcoding-dev-team/authentik/dev-server
       release: false
   pr-comment:
     needs:
@@ -272,7 +272,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         with:
-          image-name: ghcr.io/EZCoding-Dev-Team/authentik/dev-server
+          image-name: ghcr.io/ezcoding-dev-team/authentik/dev-server
       - name: Comment on PR
         if: ${{ steps.ev.outputs.shouldPush == 'true' }}
         uses: ./.github/actions/comment-pr-instructions
