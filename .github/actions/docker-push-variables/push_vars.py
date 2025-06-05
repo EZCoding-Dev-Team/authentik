@@ -10,12 +10,6 @@ parser.read(".bumpversion.cfg")
 
 # Decide if we should push the image or not
 should_push = True
-if len(os.environ.get("DOCKER_USERNAME", "")) < 1:
-    # Don't push if we don't have DOCKER_USERNAME, i.e. no secrets are available
-    should_push = False
-if os.environ.get("GITHUB_REPOSITORY").lower() == "goauthentik/authentik-internal":
-    # Don't push on the internal repo
-    should_push = False
 
 branch_name = os.environ["GITHUB_REF"]
 if os.environ.get("GITHUB_HEAD_REF", "") != "":
