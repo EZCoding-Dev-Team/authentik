@@ -7,9 +7,6 @@ on:
       image_name:
         required: true
         type: string
-      registry_dockerhub:
-        default: false
-        type: boolean
       registry_ghcr:
         default: true
         type: boolean
@@ -26,7 +23,6 @@ jobs:
       image_name: ${{ inputs.image_name }}
       image_arch: amd64
       runs-on: ubuntu-latest
-      registry_dockerhub: ${{ inputs.registry_dockerhub }}
       registry_ghcr: ${{ inputs.registry_ghcr }}
       release: ${{ inputs.release }}
   build-server-arm64:
@@ -36,7 +32,6 @@ jobs:
       image_name: ${{ inputs.image_name }}
       image_arch: arm64
       runs-on: ubuntu-22.04-arm
-      registry_dockerhub: ${{ inputs.registry_dockerhub }}
       registry_ghcr: ${{ inputs.registry_ghcr }}
       release: ${{ inputs.release }}
   get-tags:
@@ -76,12 +71,6 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         with:
           image-name: ${{ inputs.image_name }}
-      - name: Login to Docker Hub
-        if: ${{ inputs.registry_dockerhub }}
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Login to GitHub Container Registry
         if: ${{ inputs.registry_ghcr }}
         uses: docker/login-action@v3
