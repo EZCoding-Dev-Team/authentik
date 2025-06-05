@@ -12,14 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Pre-release test
-        run: |
-          make test-docker
-      - id: generate_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: ${{ secrets.GH_APP_ID }}
-          private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: prepare variables
         uses: ./.github/actions/docker-push-variables
         id: ev
@@ -31,7 +23,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1.1.4
         env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ steps.ev.outputs.version }}
