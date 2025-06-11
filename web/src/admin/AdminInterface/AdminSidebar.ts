@@ -1,9 +1,9 @@
-import { ID_REGEX, SLUG_REGEX, UUID_REGEX } from "@goauthentik/elements/router/Route";
-import { spread } from "@open-wc/lit-helpers";
+import {ID_REGEX, SLUG_REGEX, UUID_REGEX} from "@goauthentik/elements/router/Route";
+import {spread} from "@open-wc/lit-helpers";
 
-import { msg } from "@lit/localize";
-import { TemplateResult, html, nothing } from "lit";
-import { repeat } from "lit/directives/repeat.js";
+import {msg} from "@lit/localize";
+import {TemplateResult, html, nothing} from "lit";
+import {repeat} from "lit/directives/repeat.js";
 
 // The second attribute type is of string[] to help with the 'activeWhen' control, which was
 // commonplace and singular enough to merit its own handler.
@@ -18,23 +18,24 @@ type SidebarEntry = [
  * Recursively renders a sidebar entry.
  */
 export function renderSidebarItem([
-    path,
-    label,
-    attributes,
-    children,
-]: SidebarEntry): TemplateResult {
+                                      path,
+                                      label,
+                                      attributes,
+                                      children,
+                                  ]: SidebarEntry): TemplateResult {
     const properties = Array.isArray(attributes)
-        ? { ".activeWhen": attributes }
+        ? {".activeWhen": attributes}
         : (attributes ?? {});
 
     if (path) {
         properties.path = path;
     }
 
-    return html`<ak-sidebar-item ${spread(properties)}>
-        ${label ? html`<span slot="label">${label}</span>` : nothing}
-        ${children ? renderSidebarItems(children) : nothing}
-    </ak-sidebar-item>`;
+    return html`
+        <ak-sidebar-item ${spread(properties)}>
+            ${label ? html`<span slot="label">${label}</span>` : nothing}
+            ${children ? renderSidebarItems(children) : nothing}
+        </ak-sidebar-item>`;
 }
 
 /**
@@ -45,8 +46,8 @@ export function renderSidebarItems(entries: readonly SidebarEntry[]) {
 }
 
 // prettier-ignore
-export const AdminSidebarEntries: readonly SidebarEntry[] = [
-    [null, msg("Dashboards"), { "?expanded": true }, [
+export const AdminSidebarEntries: () => readonly SidebarEntry[] = () => [
+    [null, msg("Dashboards"), {"?expanded": true}, [
         ["/administration/overview", msg("Overview")],
         ["/administration/dashboard/users", msg("User Statistics")],
         ["/administration/system-tasks", msg("System Tasks")]]
@@ -90,8 +91,8 @@ export const AdminSidebarEntries: readonly SidebarEntry[] = [
 ];
 
 // prettier-ignore
-export const AdminSidebarEnterpriseEntries: readonly SidebarEntry[] = [
+export const AdminSidebarEnterpriseEntries: () => readonly SidebarEntry[] = () => [
     [null, msg("Enterprise"), null, [
         ["/enterprise/licenses", msg("Licenses"), null]
     ],
-]]
+    ]]

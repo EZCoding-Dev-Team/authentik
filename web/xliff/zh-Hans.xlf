@@ -1,5 +1,5 @@
 <?xml version="1.0"?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file target-language="zh" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+  <file target-language="zh-Hans" source-language="en" original="lit-localize-inputs" datatype="plaintext">
     <body>
       <trans-unit id="s4caed5b7a7e5d89b">
         <source>English</source>
@@ -9830,27 +9830,35 @@ Bindings to groups/users are checked against the user of the event.</source>
 </trans-unit>
 <trans-unit id="s4e1d2cb86cf5ecd0">
   <source>Field which contains members of a group. The value of this field is matched against User membership attribute.</source>
+  <target>包含组成员的字段。此字段的值与用户成员属性匹配。</target>
 </trans-unit>
 <trans-unit id="s6478025f3e0174fa">
   <source>User membership attribute</source>
+  <target>用户成员属性</target>
 </trans-unit>
 <trans-unit id="s344be99cf5d36407">
   <source>Attribute which matches the value of Group membership field.</source>
+  <target>与组成员字段的值匹配的属性。</target>
 </trans-unit>
 <trans-unit id="s65464ecd2c396106">
   <source>Corporation id</source>
+  <target>企业 ID</target>
 </trans-unit>
 <trans-unit id="sb5d655981f2a3274">
   <source>AgentId id</source>
+  <target>AgentId ID</target>
 </trans-unit>
 <trans-unit id="s0e2e4c2247feb7e1">
   <source>Also known as App ID.</source>
+  <target>也称为应用 ID。</target>
 </trans-unit>
 <trans-unit id="s9025c40297775331">
   <source>Secret</source>
+  <target>密钥</target>
 </trans-unit>
 <trans-unit id="s61f50f34aacf415e">
   <source>Authenticating with WeCom...</source>
+  <target>正在使用企业微信进行身份验证...</target>
 </trans-unit>
     </body>
   </file>

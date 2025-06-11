@@ -1,11 +1,11 @@
-import * as _zhLocale from "@goauthentik/locales/zh";
+import * as _zhLocale from "@goauthentik/locales/zh-Hans";
 
 import type { LocaleModule } from "@lit/localize";
 import { msg } from "@lit/localize";
 
 import { AkLocale, LocaleRow } from "./types";
 
-export const DEFAULT_FALLBACK = "zh";
+export const DEFAULT_FALLBACK = "zh-Hans";
 
 const zhLocale: LocaleModule = _zhLocale;
 
@@ -42,8 +42,8 @@ const debug: LocaleRow = [
 
 // prettier-ignore
 const LOCALE_TABLE: LocaleRow[] = [
+    ["zh-Hans", /^zh([_-]|$)/i,      () => msg("Chinese (simplified)"),  async () => await import("@goauthentik/locales/zh-Hans")],
     ["en",      /^en([_-]|$)/i,      () => msg("English"),               async () => await import("@goauthentik/locales/en")],
-    ["zh",      /^zh([_-]|$)/i,      () => msg("Chinese (simplified)"),  async () => await import("@goauthentik/locales/zh")],
     debug
 ];
 

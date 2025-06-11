@@ -201,9 +201,9 @@ export class AdminInterface extends WithCapabilitiesConfig(AuthenticatedInterfac
                 </ak-page-navbar>
 
                 <ak-sidebar class="${classMap(sidebarClasses)}">
-                    ${renderSidebarItems(AdminSidebarEntries)}
+                    ${renderSidebarItems(AdminSidebarEntries())}
                     ${this.can(CapabilitiesEnum.IsEnterprise)
-                        ? renderSidebarItems(AdminSidebarEnterpriseEntries)
+                        ? renderSidebarItems(AdminSidebarEnterpriseEntries())
                         : nothing}
                 </ak-sidebar>
 
