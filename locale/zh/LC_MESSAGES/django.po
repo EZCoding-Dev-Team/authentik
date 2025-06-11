@@ -2,14 +2,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Chen Zhikai, 2022
 # 刘松, 2022
 # Tianhao Chai <cth451@gmail.com>, 2024
 # Jens L. <jens@goauthentik.io>, 2025
 # deluxghost, 2025
-# 
+# Richard Yang, 2025
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -2712,6 +2713,62 @@ msgstr "SCIM 源属性映射"
 #: authentik/sources/scim/models.py
 msgid "SCIM Source Property Mappings"
 msgstr "SCIM 源属性映射"
+
+#: authentik/sources/wecom/models.py
+msgid "Corp identifier used to talk to WeCom."
+msgstr "WeCom 通信使用的企业标识符。"
+
+#: authentik/sources/wecom/models.py
+msgid "Agent identifier used to talk to WeCom."
+msgstr "WeCom 通信使用的代理标识符。"
+
+#: authentik/sources/wecom/models.py
+msgid "Secret used to talk to WeCom."
+msgstr "WeCom 通信使用的密钥。"
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source"
+msgstr "WeCom 源"
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Sources"
+msgstr "WeCom 源"
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source Property Mapping"
+msgstr "WeCom 源属性映射"
+
+#: authentik/sources/wecom/models.py
+msgid "WeCom Source Property Mappings"
+msgstr "WeCom 源属性映射"
+
+#: authentik/sources/wecom/models.py
+msgid "User WeCom Source Connection"
+msgstr "用户 WeCom 源连接"
+
+#: authentik/sources/wecom/models.py
+msgid "User WeCom Source Connections"
+msgstr "用户 WeCom 源连接"
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Authentication Successful"
+msgstr "认证成功"
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Authentication Failed"
+msgstr "认证失败"
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "You have successfully authenticated. You may close this page."
+msgstr "您已成功认证。您可以关闭此页面。"
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "There was a problem during authentication. Please try again."
+msgstr "认证过程中出现问题。请重试。"
+
+#: authentik/sources/wecom/templates/auth_result.html
+msgid "Close"
+msgstr "关闭"
 
 #: authentik/stages/authenticator_duo/models.py
 msgid "Duo Authenticator Setup Stage"

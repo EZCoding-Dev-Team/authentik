@@ -30,6 +30,7 @@ class WeComLoginChallenge(LoginChallengeMixin, Challenge):
     slug = CharField()
     state = CharField()
     callback_uri = CharField()
+    mobile_uri = CharField()
 
 
 class WeComChallengeResponse(ChallengeResponse):
@@ -82,6 +83,7 @@ class WeComSource(Source):
     def ui_login_button(self, request: HttpRequest) -> UILoginButton:
         state = get_random_string(32)
         callback = request.build_absolute_uri(reverse("authentik_sources_wecom:wecom-client-callback"))
+        mobile = request.build_absolute_uri(reverse("authentik_sources_wecom:wecom-client-mobile"))
         return UILoginButton(
             name=self.name,
             challenge=WeComLoginChallenge(
@@ -92,6 +94,7 @@ class WeComSource(Source):
                     "slug": self.slug,
                     "state": state,
                     "callback_uri": callback,
+                    "mobile_uri": mobile,
                 }
             ),
             icon_url=self.icon_url,

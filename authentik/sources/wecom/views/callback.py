@@ -1,12 +1,11 @@
-from django.core.cache import cache
 from django.http import HttpRequest, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.translation import gettext as _
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
-from authentik.sources.wecom.wecom import CODE_CACHE_KEY
+from ..models import WeComSource
+from ..wecom import WeComAuth, WeComSourceFlowManager
 
 
 @method_decorator(csrf_exempt, name="dispatch")
@@ -22,10 +21,19 @@ class CallbackView(View):
                 "auth_result.html",
                 {"success": False}
             )
-        cache_key = f"{CODE_CACHE_KEY}:{state}"
-        cache.set(cache_key, code, timeout=10)
-        return render(
-            request,
-            "auth_result.html",
-            {"success": True}
+        source: WeComSource = get_object_or_404(
+            WeComSource, slug=request.GET.get("slug", "")
         )
+        auth_api = WeComAuth(source, code)
+        user_info, identifier = auth_api.get_user_info()
+        sfm = WeComSourceFlowManager(
+            source=source,
+            request=request,
+            identifier=str(identifier),
+            user_info={
+                "info": user_info,
+                "auth_api": auth_api,
+            },
+            policy_context={},
+        )
+        return sfm.get_flow()

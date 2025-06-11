@@ -62472,10 +62472,13 @@ components:
           type: string
         callback_uri:
           type: string
+        mobile_uri:
+          type: string
       required:
       - agent_id
       - callback_uri
       - corp_id
+      - mobile_uri
       - slug
       - state
     WeComSource:

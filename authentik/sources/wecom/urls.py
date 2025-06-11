@@ -6,9 +6,15 @@ from authentik.sources.wecom.api.source import WeComSourceViewSet
 from authentik.sources.wecom.api.source_connection import (
     UserWeComSourceConnectionViewSet,
 )
-from authentik.sources.wecom.views.callback import CallbackView
+from .views.mobile import MobileView
+from .views.callback import CallbackView
 
 urlpatterns = [
+    path(
+        "mobile/",
+        MobileView.as_view(),
+        name="wecom-client-mobile",
+    ),
     path(
         "callback/",
         CallbackView.as_view(),

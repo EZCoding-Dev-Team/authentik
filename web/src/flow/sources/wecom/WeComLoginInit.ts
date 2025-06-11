@@ -20,6 +20,8 @@ import {
     WeComLoginChallenge,
 } from "@goauthentik/api";
 
+const baseUrl = "https://open.weixin.qq.com/connect/oauth2/authorize";
+
 @customElement("ak-flow-source-wecom")
 export class WeComLoginInit extends BaseStage<WeComLoginChallenge, WeComChallengeResponseRequest> {
     qrCodeRef = createRef();
@@ -28,21 +30,18 @@ export class WeComLoginInit extends BaseStage<WeComLoginChallenge, WeComChalleng
         return [PFBase, PFLogin, PFButton, PFTitle];
     }
 
-    async firstUpdated(): Promise<void> {
-        const baseUrl = "https://open.weixin.qq.com/connect/oauth2/authorize";
-
+    async mobileLogin(): Promise<void> {
         const queryParams = new URLSearchParams();
         queryParams.append("appid", this.challenge.corpId);
-        queryParams.append("redirect_uri", encodeURIComponent(this.challenge.callbackUri));
+        queryParams.append("redirect_uri", encodeURIComponent(this.challenge.mobileUri));
         queryParams.append("response_type", "code");
         queryParams.append("scope", "snsapi_privateinfo");
         queryParams.append("state", this.challenge.state);
         queryParams.append("agentid", this.challenge.agentId);
 
-        const authUrl = `${baseUrl}?${queryParams.toString()}#wechat_redirect`;
-        console.log(authUrl);
+        const mobileUrl = `${baseUrl}?${queryParams.toString()}#wechat_redirect`;
 
-        await QRCode.toCanvas(this.qrCodeRef.value, authUrl, { errorCorrectionLevel: "L" });
+        await QRCode.toCanvas(this.qrCodeRef.value, mobileUrl, { errorCorrectionLevel: "L" });
 
         const interval = setInterval(() => {
             new SourcesApi(DEFAULT_CONFIG)
@@ -61,6 +60,32 @@ export class WeComLoginInit extends BaseStage<WeComLoginChallenge, WeComChalleng
                     throw err;
                 });
         }, 1000);
+    }
+
+    callbackLogin(): void {
+        const callbackQueryParams = new URLSearchParams();
+        callbackQueryParams.append("slug", this.challenge?.slug || "");
+        const callbackUrl = `${this.challenge.callbackUri}?${callbackQueryParams.toString()}`;
+
+        const loginQueryParams = new URLSearchParams();
+        loginQueryParams.append("appid", this.challenge.corpId);
+        loginQueryParams.append("redirect_uri", encodeURIComponent(callbackUrl));
+        loginQueryParams.append("response_type", "code");
+        loginQueryParams.append("scope", "snsapi_privateinfo");
+        loginQueryParams.append("state", this.challenge.state);
+        loginQueryParams.append("agentid", this.challenge.agentId);
+
+        const loginUrl = `${baseUrl}?${loginQueryParams.toString()}#wechat_redirect`;
+        window.location.assign(loginUrl);
+    }
+
+    async firstUpdated(): Promise<void> {
+        const ua = window.navigator.userAgent.toLowerCase();
+        if (ua.indexOf("wxwork") !== -1 || ua.indexOf("micromessenger") !== -1) {
+            this.callbackLogin();
+        } else {
+            await this.mobileLogin();
+        }
     }
 
     render(): TemplateResult {
